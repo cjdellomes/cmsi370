@@ -97,8 +97,8 @@ To keep the testing controlled, each subject was tested on a computer running OS
 \end{axis}
 \end{tikzpicture}
 
-\par Average time for Learnability task \#1 on Safari: \textit{27.5 seconds}
-\par Average time for Learnability task \#1 on Opera: \textit{36.2 seconds}
+\par Average time for Learnability task \#2 on Safari: \textit{27.5 seconds}
+\par Average time for Learnability task \#2 on Opera: \textit{36.2 seconds}
 \end{center}
 \par \noindent The results of this task indicate that on average, it is easier to learn how to bookmark a page in Safari.
 
@@ -126,8 +126,8 @@ To keep the testing controlled, each subject was tested on a computer running OS
 \end{axis}
 \end{tikzpicture}
 
-\par Average time for Learnability task \#1 on Safari: \textit{18.8 seconds}
-\par Average time for Learnability task \#1 on Opera: \textit{5.3 seconds}
+\par Average time for Learnability task \#3 on Safari: \textit{18.8 seconds}
+\par Average time for Learnability task \#3 on Opera: \textit{5.3 seconds}
 \end{center}
 \par \noindent The results of this task indicate that on average, it is easier to learn how to access the histoey in Opera.
 
@@ -136,11 +136,89 @@ To keep the testing controlled, each subject was tested on a computer running OS
 \subsection{Efficiency}
 \par
 \textbf{First Task: } Change the home page of the web browser.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+	x tick label style={
+		/pgf/number format/1000 sep=},
+	xlabel= Test Subject,
+	ylabel=Time to Complete (seconds),
+	enlargelimits=0.05,
+	legend style={at={(0.5,-0.3)},
+	anchor=north,legend columns=-1},
+	ybar interval=0.5,
+]
+\addplot 
+	coordinates {(1, 8.1) (2, 9.1) (3, 15.7) (4, 10.1) (5, 9.8) (6, 7.3) (7, 10.7) (8, 20.3) (9, 25.1) (10, 10.4) (11, 8.1) (12, 7.0) (13, 0)};
+\addplot
+	coordinates {(1, 9.4) (2, 8.8) (3, 20.2) (4, 14.5) (5, 8.0) (6, 9.6) (7, 13.8) (8, 27.2) (9, 58.2) (10, 11.8) (11, 15.3) (12, 11.4) (13, 0)};
+\legend{Safari,Opera}
+\end{axis}
+\end{tikzpicture}
+
+\par Average time for Efficiency task \#1 on Safari: \textit{11.8 seconds}
+\par Average time for Efficiency task \#1 on Opera: \textit{17.4 seconds}
+\end{center}
+\par \noindent The results of this task indicate that on average, users are more efficient at changing Safari's home page.
+
+\clearpage
 
 \par
 \textbf{Second Task: } Bookmark a webpage.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+	x tick label style={
+		/pgf/number format/1000 sep=},
+	xlabel= Test Subject,
+	ylabel=Time to Complete (seconds),
+	enlargelimits=0.05,
+	legend style={at={(0.5,-0.3)},
+	anchor=north,legend columns=-1},
+	ybar interval=0.5,
+]
+\addplot 
+	coordinates {(1, 7.6) (2, 14.5) (3, 19.2) (4, 6.4) (5, 17.7) (6, 7.7) (7, 6.4) (8, 10.2) (9, 12.3) (10, 11.8) (11, 6.0) (12, 5.8) (13, 0)};
+\addplot
+	coordinates {(1, 5.9) (2, 2.1) (3, 7.8) (4, 3.9) (5, 3.2) (6, 3.6) (7, 1.7) (8, 10.2) (9, 40.2) (10, 6.9) (11, 4.6) (12, 9.9) (13, 0)};
+\legend{Safari,Opera}
+\end{axis}
+\end{tikzpicture}
+
+\par Average time for Efficiency task \#2 on Safari: \textit{10.5 seconds}
+\par Average time for Efficiency task \#2 on Opera: \textit{8.3 seconds}
+\end{center}
+\par \noindent The results of this task indicate that on average, users are more efficient at bookmarking webpages in Opera.
+
+\clearpage
 
 \par
 \textbf{Third Task: } Use the history to find and access a webpage visited the previous day.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+	x tick label style={
+		/pgf/number format/1000 sep=},
+	xlabel= Test Subject,
+	ylabel=Time to Complete (seconds),
+	enlargelimits=0.05,
+	legend style={at={(0.5,-0.3)},
+	anchor=north,legend columns=-1},
+	ybar interval=0.5,
+]
+\addplot 
+	coordinates {(1, 4.8) (2, 2.4) (3, 4.8) (4, 2.1) (5, 17.2) (6, 4.0) (7, 4.6) (8, 3.5) (9, 6.2) (10, 5.7) (11, 9.0) (12, 4.5) (13, 0)};
+\addplot
+	coordinates {(1, 3.5) (2, 2.2) (3, 3.4) (4, 1.8) (5, 1.6) (6, 4.3) (7, 3.5) (8, 3.1) (9, 5.2) (10, 4.7) (11, 3.3) (12, 5.8) (13, 0)};
+\legend{Safari,Opera}
+\end{axis}
+\end{tikzpicture}
+
+\par Average time for Efficiency task \#3 on Safari: \textit{5.7 seconds}
+\par Average time for Efficiency task \#3 on Opera: \textit{3.5 seconds}
+\end{center}
+\par \noindent The results of this task indicate that on average, users are more efficient at accessing the browsing history in Opera
+
+\clearpage
 
 \end{document}
