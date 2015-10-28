@@ -25,13 +25,13 @@ $(function () {
 	$("#champ-search").click(function () {
 		$.getJSON(
 
-			"https://na.api.pvp.net/api/lol/na/v1.2/champion/" + $("#champ-search-term").val(),
+			"https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + $("#champ-search-term").val(),
 			{
 				api_key : key
 			}
 
 		).done(function (result) {
-			var output = result.active;
+			var output = result.name + " " + result.title;
 
 			$("#champ-search-output").text(output);
 
