@@ -12,7 +12,10 @@ $(function () {
 
 		).done(function (result) {
 
-			var output = result.champions[0].id;
+			var min = 0;
+			var max = result.champions.length;
+			var rand = Math.floor(Math.random() * (max - min + 1)) + min;
+			var output = result.champions[rand].id;
 
 			$("#champ-request-output").text(output);
 
@@ -35,10 +38,17 @@ $(function () {
 		});
 	});
 
+    $(".dropdown-menu li a").click(function() {
+
+      $("#summoner-region:first-child").text($(this).text());
+      $("#summoner-region:first-child").val($(this).text());
+
+  	});
+
 	$("#summoner-search").click(function () {
 		$.getJSON(
 
-			"https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + $("#summoner-search-term").val(),
+			"https://" + $("#summoner-region:first-child").val() + ".api.pvp.net/api/lol/" + $("#summoner-region:first-child").val() + "/v1.4/summoner/by-name/" + $("#summoner-search-term").val(),
 			{
 				api_key : key
 			}
