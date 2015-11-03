@@ -17,24 +17,20 @@ $(function () {
 			var rand = Math.floor(Math.random() * (max - min + 1)) + min;
 			var output = result.champions[rand].id;
 
-			$("#champ-request-output").text(output);
+			$.getJSON(
 
-		});
-	});
+				"https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + output,
+				{
+					api_key : key
+				}
 
-	$("#champ-search").click(function () {
-		$.getJSON(
+			).done(function (result2) {
 
-			"https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + $("#champ-search-term").val(),
-			{
-				api_key : key
-			}
+				var output2 = result2.name + " " + result2.title;
 
-		).done(function (result) {
+				$("#champ-request-output").text(output2);
 
-			var output = result.name + " " + result.title;
-
-			$("#champ-search-output").text(output);
+			});
 
 		});
 	});
@@ -59,7 +55,29 @@ $(function () {
 			var standardized = $("#summoner-search-term").val().toLowerCase().replace(/\s+/g, '');
 			var output = result[standardized].id;
 
-			$("#summoner-search-output").text(output);
+			$.getJSON(
+
+				"https://" + $("#summoner-region:first-child").val() + ".api.pvp.net/api/lol/" + $("#summoner-region:first-child").val() + "/v2.5/league/by-summoner/" + output + "/entry",
+				{
+					api_key : key
+				}
+
+			).done(function (result2) {
+
+				$("#summoner-search-output").text("")
+
+				var queue = result2[output][0].queue;
+				var name = result2[output][0].name;
+				var tier = result2[output][0].tier;
+				var division = result2[output][0].entries[0].division;
+				var leaguePoints = result2[output][0].entries[0].leaguePoints;
+				var wins = result2[output][0].entries[0].wins;
+				var losses = result2[output][0].entries[0].losses;
+				$("#summoner-search-output").append(queue + " " + name + "<br />")
+				$("#summoner-search-output").append(tier + " " + division + " " + leaguePoints + "lp" + "<br />")
+				$("#summoner-search-output").append(wins + " wins and " + losses + " losses")
+
+			});
 
 		});
 	});
@@ -70,21 +88,4 @@ $(function () {
       $("#rank-region:first-child").val($(this).text());
 
   	});
-
-	$("#rank-search").click(function () {
-		$.getJSON(
-
-			"https://" + $("#rank-region:first-child").val() + ".api.pvp.net/api/lol/" + $("#rank-region:first-child").val() + "/v2.5/league/by-summoner/" + $("#rank-search-term").val() + "/entry",
-			{
-				api_key : key
-			}
-
-		).done(function (result) {
-
-			var output = result[$("#rank-search-term").val()][0].tier + " " + result[$("#rank-search-term").val()][0].entries[0].division + " " + result[$("#rank-search-term").val()][0].entries[0].leaguePoints + " lp";
-			$("#rank-search-output").text(output);
-
-		});
-	});
-
 });
