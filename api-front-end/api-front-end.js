@@ -122,15 +122,75 @@ $(function () {
   				$("#recent-match-output").append(gameMode + " " + subType + "<br />");
 
   				var win = result2.games[0].stats.win;
+  				$("#recent-match-output").append("Game Won: " + win + "<br />");
 
-  				if (win == false){
-  					$("#recent-match-output").append("Game Lost <br />");
-  				}
-  				else {
-  					$("recent-match-output").append("Game Won <br />");
-  				}
+  				var kills = result2.games[0].stats.championsKilled;
+  				var assists = result2.games[0].stats.assists;
+  				var deaths = result2.games[0].stats.numDeaths;
+  				var kda = (kills + assists) / deaths;
 
-  				var champ = result2.games[0].championId;
+  				$("#recent-match-output").append(kills + " kills, "  + deaths + " deaths, " + assists + " assists, <br />");
+  				$("#recent-match-output").append("Kill, Death, Assist Ratio: " + kda + "<br />");
+
+  				var creeps = result2.games[0].stats.minionsKilled;
+  				var goldEarned = result2.games[0].stats.goldEarned;
+  				$("#recent-match-output").append("Creeps: " + creeps);
+  				$("#recent-match-output").append("<br />Gold: " + goldEarned);
+
+
+  				$("#recent-match-output").append("<br />Summoner Spells: ");
+  				var summonerSpell1 = result2.games[0].spell1;
+  				var summonerSpell2 = result2.games[0].spell2;
+  				$.getJSON(
+
+  					"https://global.api.pvp.net/api/lol/static-data/na/v1.2/summoner-spell/" + summonerSpell1,
+  					{
+  						api_key : key
+  					}
+
+  				).done(function (result3) {
+
+  					summonerSpell1 = result3.name;
+  					$("#recent-match-output").append(summonerSpell1 + " ");
+
+  				});
+  				$.getJSON(
+
+  					"https://global.api.pvp.net/api/lol/static-data/na/v1.2/summoner-spell/" + summonerSpell2,
+  					{
+  						api_key : key
+  					}
+
+  				).done(function (result3) {
+
+  					summonerSpell2 = result3.name;
+  					$("#recent-match-output").append(summonerSpell2 + " ");
+
+  				});
+
+				items = [result2.games[0].stats.item0];
+				items.push(result2.games[0].stats.item1);
+				items.push(result2.games[0].stats.item2);
+				items.push(result2.games[0].stats.item3);
+				items.push(result2.games[0].stats.item4);
+				items.push(result2.games[0].stats.item5);
+
+				for (var i = 0; i < items.length; i++){
+					$.getJSON(
+
+						"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item/" + items[i],
+						{
+							api_key : key
+						}
+
+					).done(function (result3) {
+
+						$("#recent-match-output").append("<br /> Item: "+ result3.name);
+
+					});
+				}
+
+				var champ = result2.games[0].championId;
   				$.getJSON(
 
 					"https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + champ,
@@ -141,29 +201,9 @@ $(function () {
 				).done(function (result3) {
 
 					champ = result3.name + " " + result3.title;
-					$("#recent-match-output").append(champ);
-
+					$("#recent-match-output").append("<br /> Champion: " + champ);
 
 				});
-
-  				var kills = result2.games[0].stats.championsKilled;
-  				var assists = result2.games[0].stats.asssists;
-  				var deaths = result2.games[0].stats.numDeaths;
-  				var kda = (kills + assists) / deaths;
-
-  				$("#recent-match-output").append(kills + " kills, " + assists + " assists, " + deaths + " deaths <br />")
-  				$("#recent-match-output").append("Kill, Death, Assist Ratio: " + kda + "<br />")
-
-  				var summonerSpell1 = result2.games[0].spell1;
-  				var summonerSpell2 = result2.games[0].spell2;
-
-  				
-  				var creeps = result2.games[0].stats.minionsKilled;
-  				var goldEarned = result2.games[0].stats.goldEarned;
-
-  				/*$("#recent-match-output").append(gameMode + " " + subType + "<br />")
-				$("#recent-match-output").append(champ + " " + )
-				$("#recent-match-output").append(wins + " wins and " + losses + " losses")*/
 
   			});
 
