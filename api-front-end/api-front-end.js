@@ -210,4 +210,36 @@ $(function () {
   		});
   	});
 
+	$("#free-champ-request").click(function () {
+		$.getJSON(
+
+			"https://na.api.pvp.net/api/lol/na/v1.2/champion",
+			{
+				api_key : key
+			}
+
+		).done(function (result) {
+			$("#free-champ-request-output").text("");
+			output = result.champions
+			for (var i = 0; i < output.length; i++){
+				if (output[i].freeToPlay == true) {
+					$.getJSON(
+
+						"https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + output[i].id,
+						{
+							api_key : key
+						}
+
+					).done(function (result2) {
+
+						var output2 = result2.name + " " + result2.title;
+
+						$("#free-champ-request-output").append(output2 + "<br />");
+
+					});
+				}
+			}
+		});
+	});
+
 });
