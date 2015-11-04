@@ -127,10 +127,10 @@ $(function () {
   				var kills = result2.games[0].stats.championsKilled;
   				var assists = result2.games[0].stats.assists;
   				var deaths = result2.games[0].stats.numDeaths;
-  				var kda = (kills + assists) / deaths;
+  				var ratio = (kills + assists) / deaths;
 
   				$("#recent-match-output").append(kills + " kills, "  + deaths + " deaths, " + assists + " assists, <br />");
-  				$("#recent-match-output").append("Kill, Death, Assist Ratio: " + kda + "<br />");
+  				$("#recent-match-output").append("Kill, Death, Assist Ratio: " + ratio + "<br />");
 
   				var creeps = result2.games[0].stats.minionsKilled;
   				var goldEarned = result2.games[0].stats.goldEarned;
