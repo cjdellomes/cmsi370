@@ -17,7 +17,7 @@
       </div>
 
       <div class="row">
-          <div class="form-group">
+        <div class="form-group">
 
             <label for="champ-request">Get Random Champion</label>
             <button id="champ-request" class="btn btn-default">Random Champion</button>
@@ -72,6 +72,27 @@
           <label for="free-champ-request">Get Currently Free To Play Champion</label>
           <button id="free-champ-request" class="btn btn-default">Free To Play Champions</button>
           <p id="free-champ-request-output"></p>
+
+          <label for="shard-request">Check Riot Server Status:</label>
+            <div class="dropdown">
+                <button id="shard-request-region" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Region
+                  <span class="caret"></span>
+                </button>
+                <ul id="shard-request-dropdown" class="dropdown-menu">
+                  <li><a href="#">na</a></li>
+                  <li><a href="#">euw</a></li>
+                  <li><a href="#">eune</a></li>
+                  <li><a href="#">br</a></li>
+                  <li><a href="#">ru</a></li>
+                  <li><a href="#">lan</a></li>
+                  <li><a href="#">las</a></li>
+                  <li><a href="#">oce</a></li>
+                  <li><a href="#">tr</a></li>
+                </ul>
+              </div>
+              <button id="shard-request" class="btn btn-default">Riot Server Status</button>
+              <p id="shard-request-output"></p>
+            </div>
 
       </div>
     </div>

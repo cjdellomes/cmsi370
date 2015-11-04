@@ -242,4 +242,31 @@ $(function () {
 		});
 	});
 
+	$("#shard-request-dropdown li a").click(function () {
+
+      $("#shard-request-region:first-child").text($(this).text());
+      $("#shard-request-region:first-child").val($(this).text());
+
+  	});
+
+  	$("#shard-request").click(function () {
+  		$.getJSON(
+
+  			"http://status.leagueoflegends.com/shards/" + $("#shard-request-region:first-child").val(),
+  			{
+  				api_key : key
+  			}
+
+  		).done(function (result) {
+
+  			$("#shard-request-output").text("");
+  			$("#shard-request-output").text(result.name);
+
+  			for (var i = 0; i < result.services.length; i++) {
+  				$("#shard-request-output").append("<br />" + result.services[i].name + ": " + result.services[i].status);
+  			}
+
+  		});
+  	});
+
 });
