@@ -1,8 +1,8 @@
 $(function () {
 
-	key = "f4380caf-2694-4e63-94b2-3d14fbaaebf4"
+	key = "f4380caf-2694-4e63-94b2-3d14fbaaebf4" // JD: 1, 7
 
-	$("#champ-request").click(function () {
+	$("#champ-request").click(function () { // JD: 1 ...etc. etc. etc.
 		$.getJSON(
 
 			"https://na.api.pvp.net/api/lol/na/v1.2/champion",
@@ -24,7 +24,7 @@ $(function () {
 					api_key : key
 				}
 
-			).done(function (result2) {
+			).done(function (result2) { // JD: 5, 6
 
 				var output2 = result2.name + " " + result2.title;
 
@@ -36,7 +36,7 @@ $(function () {
 	});
 
     $("#summoner-dropdown li a").click(function() {
-
+        // JD: 8
       $("#summoner-region:first-child").text($(this).text());
       $("#summoner-region:first-child").val($(this).text());
 
@@ -45,7 +45,7 @@ $(function () {
 	$("#summoner-search").click(function () {
 
 		$.getJSON(
-
+            // JD: 2
 			"https://" + $("#summoner-region:first-child").val() + ".api.pvp.net/api/lol/" + $("#summoner-region:first-child").val() + "/v1.4/summoner/by-name/" + $("#summoner-search-term").val(),
 			{
 				api_key : key
@@ -57,17 +57,17 @@ $(function () {
 			var output = result[standardized].id;
 
 			$.getJSON(
-
+                // JD: 2
 				"https://" + $("#summoner-region:first-child").val() + ".api.pvp.net/api/lol/" + $("#summoner-region:first-child").val() + "/v2.5/league/by-summoner/" + output + "/entry",
 				{
 					api_key : key
 				}
 
-			).done(function (result2) {
+			).done(function (result2) { // JD: 5, 6
 
-				$("#summoner-search-output").text("")
+				$("#summoner-search-output").text("") // JD: 7
 
-				var queue = result2[output][0].queue;
+				var queue = result2[output][0].queue; // JD: 9
 				var name = result2[output][0].name;
 				var tier = result2[output][0].tier;
 				var division = result2[output][0].entries[0].division;
@@ -84,17 +84,17 @@ $(function () {
 
 	});
 
-	$("#recent-match-dropdown li a").click(function() {
-
+	$("#recent-match-dropdown li a").click(function() { // JD: 10
+        // JD: 8
       $("#recent-match-region:first-child").text($(this).text());
       $("#recent-match-region:first-child").val($(this).text());
 
   	});
 
-  	$("#recent-match-search").click(function() {
+  	$("#recent-match-search").click(function() { // JD: 10
 
   		$.getJSON(
-
+            // JD: 2
   			"https://" + $("#recent-match-region:first-child").val() + ".api.pvp.net/api/lol/" + $("#recent-match-region:first-child").val() + "/v1.4/summoner/by-name/" + $("#recent-match-search-term").val(),
   			{
   				api_key : key
@@ -106,17 +106,17 @@ $(function () {
 			var output = result[standardized].id;
 
   			$.getJSON(
-
+                // JD: 2
   				"https://" + $("#recent-match-region:first-child").val() + ".api.pvp.net/api/lol/" + $("#recent-match-region:first-child").val() + "/v1.3/game/by-summoner/" + output + "/recent",
   				{
   					api_key : key
   				}
 
-  			).done(function (result2) {
+  			).done(function (result2) { // JD: 5, 6
 
   				$("#recent-match-output").text("");
 
-  				var gameMode = result2.games[0].gameMode;
+  				var gameMode = result2.games[0].gameMode; // JD: 9
   				var subType = result2.games[0].subType;
 
   				$("#recent-match-output").append(gameMode + " " + subType + "<br />");
@@ -168,14 +168,14 @@ $(function () {
 
   				});
 
-				items = [result2.games[0].stats.item0];
+				items = [result2.games[0].stats.item0]; // JD: 9
 				items.push(result2.games[0].stats.item1);
 				items.push(result2.games[0].stats.item2);
 				items.push(result2.games[0].stats.item3);
 				items.push(result2.games[0].stats.item4);
 				items.push(result2.games[0].stats.item5);
 
-				for (var i = 0; i < items.length; i++){
+				for (var i = 0; i < items.length; i++){ // JD: 11
 					$.getJSON(
 
 						"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item/" + items[i],
@@ -198,7 +198,7 @@ $(function () {
 						api_key : key
 					}
 
-				).done(function (result3) {
+				).done(function (result3) { // JD: 5, 6 (squared because it is yet one more level deeper!)
 
 					champ = result3.name + " " + result3.title;
 					$("#recent-match-output").append("<br /> Champion: " + champ);
@@ -221,8 +221,8 @@ $(function () {
 		).done(function (result) {
 			$("#free-champ-request-output").text("");
 			output = result.champions
-			for (var i = 0; i < output.length; i++){
-				if (output[i].freeToPlay == true) {
+			for (var i = 0; i < output.length; i++){ // JD: 11
+				if (output[i].freeToPlay == true) { // JD: 12
 					$.getJSON(
 
 						"https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + output[i].id,
@@ -230,7 +230,7 @@ $(function () {
 							api_key : key
 						}
 
-					).done(function (result2) {
+					).done(function (result2) { // JD: 5, 6
 
 						var output2 = result2.name + " " + result2.title;
 
@@ -243,7 +243,7 @@ $(function () {
 	});
 
 	$("#shard-request-dropdown li a").click(function () {
-
+        // JD: 8
       $("#shard-request-region:first-child").text($(this).text());
       $("#shard-request-region:first-child").val($(this).text());
 
@@ -258,7 +258,7 @@ $(function () {
   			}
 
   		).done(function (result) {
-
+            // JD: 8
   			$("#shard-request-output").text("");
   			$("#shard-request-output").text(result.name);
 
