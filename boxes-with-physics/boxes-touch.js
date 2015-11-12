@@ -81,6 +81,12 @@ var BoxesTouch = {
         // Eat up the event so that the drawing area does not
         // deal with it.
         event.stopPropagation();
+    },
+
+    physics: function (event) {
+        $.each(event.changedTouches, function (index, touch) {
+            touch.target.deltaX = touch.pageX;
+        });
     }
 
 };
