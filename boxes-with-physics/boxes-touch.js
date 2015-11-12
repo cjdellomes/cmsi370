@@ -17,6 +17,7 @@ var BoxesTouch = {
             .find("div.box").each(function (index, element) {
                 element.addEventListener("touchstart", BoxesTouch.startMove, false);
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
+                element.addEventListener("touchend", BoxesTouch.physics, false);
             });
     },
 
@@ -85,7 +86,13 @@ var BoxesTouch = {
 
     physics: function (event) {
         $.each(event.changedTouches, function (index, touch) {
-            touch.target.deltaX = touch.pageX;
+            //Physics only applies when not dragging
+            if (touch.target.movingBox){
+                touch.target.movingBox.offset({
+                    left: touch.pageX - touch.target.deltaX,
+                    top: touch.pageY - touch.target.deltaY
+                });
+            }
         });
     }
 
