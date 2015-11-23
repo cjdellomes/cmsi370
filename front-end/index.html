@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Riot API</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>League Of Data</h1>
+        <p>League of Legends Data</p>
+        <p>Example Summoner Names: The Not Joe, Fat Koala, The PTF, Febiven, DoubleLift, Shiphtur</p>
+      </div>
+    </div>
+    <div class="container">
+
+      <div class="row">
+        <div class="form-group">
+
+            <label for="champ-request">Get Random Champion</label>
+            <button id="champ-request" class="btn btn-default">Random Champion</button>
+            <p id="champ-request-output"></p>
+
+            <label for="summoner-search-term">Search Summoner Rank by Name:</label>
+            <input type="text" class="form-control" id="summoner-search-term">
+            <div class="dropdown">
+              <!-- JD: 2 -->
+              <button id="summoner-region" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Region
+                <span class="caret"></span>
+              </button>
+              <ul id="summoner-dropdown" class="dropdown-menu">
+                <li><a href="#">na</a></li>
+                <li><a href="#">euw</a></li>
+                <li><a href="#">eune</a></li>
+                <li><a href="#">kr</a></li>
+                <li><a href="#">br</a></li>
+                <li><a href="#">ru</a></li>
+                <li><a href="#">lan</a></li>
+                <li><a href="#">las</a></li>
+                <li><a href="#">oce</a></li>
+                <li><a href="#">tr</a></li>
+              </ul>
+            </div>
+            <button id="summoner-search" class="btn btn-default">Search Summoner Name</button>
+            <p id="summoner-search-output"></p>
+          </div>
+
+          <label for="recent-match-search-term">Search Most Recent Match Stats by Summoner Name:</label>
+            <input type="text" class="form-control" id="recent-match-search-term">
+            <div class="dropdown">
+              <!-- JD: 2 -->
+              <button id="recent-match-region" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Region
+                <span class="caret"></span>
+              </button>
+              <ul id="recent-match-dropdown" class="dropdown-menu"> <!-- JD: 3 -->
+                <li><a href="#">na</a></li>
+                <li><a href="#">euw</a></li>
+                <li><a href="#">eune</a></li>
+                <li><a href="#">kr</a></li>
+                <li><a href="#">br</a></li>
+                <li><a href="#">ru</a></li>
+                <li><a href="#">lan</a></li>
+                <li><a href="#">las</a></li>
+                <li><a href="#">oce</a></li>
+                <li><a href="#">tr</a></li>
+              </ul>
+            </div>
+            <button id="recent-match-search" class="btn btn-default">Search Summoner Name</button>
+            <p id="recent-match-output"></p>
+          </div>
+
+          <label for="free-champ-request">Get Currently Free To Play Champion</label>
+          <button id="free-champ-request" class="btn btn-default">Free To Play Champions</button>
+          <p id="free-champ-request-output"></p>
+
+          <label for="shard-request">Check Riot Server Status:</label>
+            <div class="dropdown">
+              <!-- JD: 2, 4 -->
+                <button id="shard-request-region" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Region
+                  <span class="caret"></span>
+                </button>
+                <ul id="shard-request-dropdown" class="dropdown-menu">
+                  <li><a href="#">na</a></li>
+                  <li><a href="#">euw</a></li>
+                  <li><a href="#">eune</a></li>
+                  <li><a href="#">br</a></li>
+                  <li><a href="#">ru</a></li>
+                  <li><a href="#">lan</a></li>
+                  <li><a href="#">las</a></li>
+                  <li><a href="#">oce</a></li>
+                  <li><a href="#">tr</a></li>
+                </ul>
+              </div>
+              <button id="shard-request" class="btn btn-default">Riot Server Status</button>
+              <p id="shard-request-output"></p>
+            </div>
+
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="api-front-end.js"></script>
+  </body>
+</html>
