@@ -34,7 +34,13 @@ CMSI 370: Interaction Design\\
 \\
 \indent While voice functionality is available, the proposed interface would still have an overall smooth sense of flow for users utilizing the traditional mouse and keyboard setup. The interface will coordinate with the Reddit API to ensure users remain capable of standard user abilities, like voting and posting. However, the interface will improve upon the current layout of Reddit's site by adopting aspects of other popular websites and popularly accepted interface guidelines, such as the OSX Human Guidelines and Google Material Design Principles.
 
-\section{Top Level Design}
+\section{Top Level Design} While voice recognition is available, the proposed interface still accomodates keyboard and mouse or even touch on mobile devices by providing an elegant model. The main features of the interface are an overhead multipurpose navbar, fully interactive media objects, and toggle sidebar for navigating to subscribed subreddits.
+
+\subsection{Overhead Navbar} The design incorporates an overhead navbar at the top of the site with multiple related features. The navbar includes the search bar as well as account related tabs, such as log in, sign up, and settings. The nav bar would also include the reddit logo, which would return the user to the site's front page when clicked, along with tabs for categories of posts, such as hot, new, rising, and top. The main purpose of the navbar is to keep the window uncluttered while maintaining functionality in a compact space.
+
+\subsection{Interactive Media Mbjects} The interface maintains Reddit's traditional usage of media objects while expanding their overall interactivity. Like in the original site, media objects would include text which, when clicked, link the user to the text post and comments or linked article depending on the nature of the post. The media objects would also retain their quality of small links which allow the user to read the comments, share or save the post, and hide or report the post. The main difference in implementation would be that posts linked to pictures and gifs would produce a copy of the picture overlaying the window when either the text or the thumbnail is clicked. The main purpose of this design choice is to preserve the current way in which content is projected by Reddit and maintain user familiarity with the site while at the same time removing the need for users to be redirected to a different website to view photos and gifs.
+
+\subsection{Toggle Sidebar}
 
 \section{Usage Scenarios}
 
