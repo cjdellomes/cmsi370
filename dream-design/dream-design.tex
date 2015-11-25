@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{graphicx}
-\usepackage{pgfplots}
+\usepackage{float}
 \begin{document}
 \title{A Better Front End for the Internet's Front Page: A Dream Interface for Reddit}
 \author{Chris Dellomes\\
@@ -29,7 +29,14 @@ CMSI 370: Interaction Design\\
 \section{Introuction} When reddit.com launched back in June of 2005\cite{DMR}, it was a small social network site based on users submitting and voting on text posts and posted links. Over time, as Reddit implemented more features, such as giving users the ability to comment and create their own subredits, the number of redditors and subreddits grew exponentially\cite{Metrics}. As of October 2015, Reddit has 202 million unique visitors and over 800,000 subreddits, making reddit in the top 50 most popular web sites in the world\cite{Alexa, Reddit}. With the growing popularity of Reddit, the analysis of the site's current layout and the development of an improved user interface is a significant research topic.
 
 \section{System Description} The design will utilize the Reddit API to allow users to post links and text submissions, make new subreddits, comment, and vote like the original site. However, the interface will present the content and allow users to interact with the content in a more natural and accessible manner. This investigation presents an ideal user interface design for the Reddit API that focuses on improving site navigation and adding voice functionality.
-\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{reddit.png}
+\caption{The front page of reddit}
+\end{center}
+\end{figure}
+
 \indent The interface will implement voice recognition technology, similar to Siri for iOS or Cortana for Windows 10, in order for users to navigate and interact with content. On the original site, each post has an index, a net score of upvotes, comments with each one also having a net score of upvotes, and a subreddit which it was posted to. With voice recognition technology, navigating and interacting would be possible through voice commands, such as ``upvote post 1'', ``downvote comment by user Unidan'', ``go to the movies subreddit'', and ``post this text message...''. Integrating such technology into the reddit interface would allow users to control their reddit experience without requiring a mouse and keyboard. The implementation of voice recognition would be a powerful tool for users, especially physically impaired users who cannot interact with the content through external hardware.\\
 \\
 \indent While voice functionality is available, the proposed interface would still have an overall smooth sense of flow for users utilizing either a traditional mouse and keyboard setup or touch screen devices. The interface will coordinate with the Reddit API to ensure users remain capable of standard user abilities, like voting and posting. However, the interface will improve upon the current layout of Reddit's site by adopting aspects of other popular websites and popularly accepted interface guidelines, such as the OSX Human Guidelines and Google Material Design Principles.
@@ -38,9 +45,30 @@ CMSI 370: Interaction Design\\
 
 \subsection{Overhead Navbar} The design incorporates a constant overhead navbar at the top of the site with multiple related features. The navbar includes the search bar, a link to post a submission, as well as account related tabs, such as log in, sign up, and settings. The nav bar would also include the name of the current subreddit, the reddit logo, which would return the user to the site's front page when clicked, along with tabs for categories of posts, such as hot, new, rising, and top. Certain navbar tabs, like posting a submission and account settings would not be visible while the user is not logged in. Similarly, the sign up and login tabs would disappear while the user is currently logged into an account. For tabs which require another selection, such as when viewing top posts of all time, a smaller navbar would appear below the main one with tabs for filtering posts by submission date, such as past week, past month, and all time.
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{navbar.png}
+\caption{The navbar is similar to this one utilized by facebook in that it contains multiple functions, such as search and account settings, and remains at the top of the page even when scrolling.}
+\end{center}
+\end{figure}
+
 \subsection{Interactive Media Objects} The interface maintains Reddit's traditional usage of media objects while expanding their overall interactivity. Like in the original site, media objects would include text which, when clicked, link the user to the text post and comments or linked article depending on the nature of the post. The media objects would also retain their quality of allowing the user to vote on the post, read the comments, share or save the post, and hide or report the post. The main difference in implementation would be that posts linked to pictures and gifs would produce a copy of the picture overlaying the window when either the text or the thumbnail is clicked. Similar to the post submission tab, the upvote and downvote buttons would be hidden until the user has met the required paramter of being logged into an account.
 
-\subsection{Toggle Sidebars} The proposed interface design utilizes a sidebar that can be toggled between being hidden and being shown. One of the sidebars will allow the user to subscribe to the current subreddit as well as include all of the user's subscribed subreddits which, when clicked, navigates the user to the selected subreddit. The other sidebar will display subreddit information, such as a subreddit description, moderators, and other relevant information. The sidebars will be able to be toggled by the click of a menu icon in the overhead navbar.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{media.png}
+\caption{Similar to the above figure, when a post which features an image or gif is clicked, the content would appear in the center and overlay the screen, which is in the background and darkened for emphasis.}
+\end{center}
+\end{figure}
+
+\subsection{Toggle Sidebars} The proposed interface design utilizes a sidebar that overlays the content on screen and can be toggled between being hidden and being shown. One of the sidebars will allow the user to subscribe to the current subreddit as well as include all of the user's subscribed subreddits which, when clicked, navigates the user to the selected subreddit. The other sidebar will display subreddit information, such as a subreddit description, moderators, and other relevant information. The sidebars will be able to be toggled by the click of a menu icon in the overhead navbar.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{sidebar.png}
+\caption{The sidebar acts similar to the one in this figure by sliding in from the side overlaying the content on screen, which is in the background and darkened to provide emphasis, similar to the media objects.}
+\end{center}
+\end{figure}
 
 \section{Usage Scenarios} Using the proposed user interface, there are multiple instances of usage scenarios. One such usage is when a redditor intends to post a submission. In the current site's format, the user is able to click on a button indicating the ability to post a submission to the site. However, the user is prompted with a login form instead of a content submission form in the case that the user has not yet logged into an existing account. The proposed interface design seeks to streamline the content submission process for users. If the user is not logged into an account, the submission post is hidden, keeping the function exclusive to logged in users. Once the user is logged in, however, the submission post tab becomes available and prompts the typical form for posting a submission. While Reddit's current system prompts a user to login when trying to post without an account, the proposed interface design hides those functions until the user is ready to acces them.\\
 \\
@@ -54,7 +82,7 @@ CMSI 370: Interaction Design\\
 
 \subsection{Interactive Media Objects} The main purpose of this design choice is to preserve the current way in which content is projected by Reddit and maintain user familiarity with the site while at the same time removing the need for users to be redirected to a different website to view photos and gifs. This aspect of the interface design is meant to align with Google's Material Design principles in that the media objects no longer remove the user from the Reddit experience when interacted with\cite{Google}. By presenting images in such a way that overlays the site, the component also conforms to Apple's OSX Human Interface Guidelines in that the active image is highlighted and stands out from the rest of the content on screen\cite{OSX}.
 
-\subsection{Toggle Sidebar} The core concept of this interface implementation is similar to the navbar in removing clutter from the window while compacting and maintaining general functionality. The intension of the component is to conform to Android Developer Principles and allow users to access their saved data at any point while navigating the interface\cite{Android}.
+\subsection{Toggle Sidebar} The core concept of this interface implementation is similar to the navbar in removing clutter from the window while compacting and maintaining general functionality. By keeping the sidebar hidden, but accessible from the navbar, the subreddit links do not interfere with current navigation while being easily accessible, facilitating a smooth transition from one subreddit to another. The intention of the component is to conform to Android Developer Principles by allowing users to access their saved data at any point while navigating the interface and displaying content only when users desire it.\cite{Android}.
 
 \section{Usability Forecast} Although the proposed interface design has not been tested, we can analyze the overall design and construct a usability forecast.
 
