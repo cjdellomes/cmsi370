@@ -99,6 +99,11 @@
     var FRAME_RATE = 10;
     var MS_BETWEEN_FRAMES = 1000 / FRAME_RATE;
 
+    var topBoundary = $("#drawing-area").offset().top;
+    var bottomBoundary = topBoundary + drawingArea.height;
+    var leftBoundary = $("#drawing-area").offset().left;
+    var rightBoundary = leftBoundary + drawingArea.width;
+
     var updateBoxPositions = function (timestamp){
         var timePassed = timestamp -lastTimestamp;
         if (timePassed > MS_BETWEEN_FRAMES){
@@ -113,6 +118,27 @@
                 element.velocity.y += element.acceleration.y * timePassed;
 
                 $(element).offset(offset);
+
+                if(offset.top < topBoundary) {
+                    offset.top = topBoundary;
+                    element.velocity.y *= -0.5;
+                }
+
+                if(offset.top + element.height > bottomBoundary) {
+                    offset.top = element.height - drawingArea.height;
+                    element.velocity.y *= -0.5;
+                }
+
+                if(offset.left < leftBoundary) {
+                    offset.left = leftBoundary;
+                    element.velocity.x *= -0.5;
+                }
+
+                if(offset.left > rightBoundary) {
+                    offset.left = rightBoundary;
+                    element.velocity.x *= -0.5;
+                }
+                
             });
 
             lastTimestamp = timestamp;

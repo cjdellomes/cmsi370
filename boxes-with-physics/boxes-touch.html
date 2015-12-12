@@ -10,8 +10,6 @@
     <title>Direct Manipulation on a Web Page: Touch Version</title>
     <link rel="stylesheet" type="text/css" href="boxes-touch.css"/>
 
-    <!-- Styles that are totally specific to this page. -->
-    <link rel="stylesheet" type="text/css" href="boxes-touch.css"/>
   </head>
     
   <body>
@@ -23,10 +21,10 @@
           style="width: 60px; height: 60px; left: 50px; top: 50px">
       </div>
       <div class="box"
-          style="width: 80px; height: 50px; left: 384px; top: 256px">
+          style="width: 80px; height: 50px; left: 200px; top: 200px">
       </div>
       <div class="box"
-          style="width: 70px; height: 90px; left: 120px; top: 384px">
+          style="width: 70px; height: 90px; left: 120px; top: 200px">
       </div>
     </div>
 
@@ -40,7 +38,8 @@
     <!-- Code that is totally specific to this page. -->
     <script>
     $(function () {
-    $("#drawing-area").boxesTouch();
-    });</script>
+        $("#drawing-area").boxesTouch();
+    });
+    </script>
   </body>
 </html>
