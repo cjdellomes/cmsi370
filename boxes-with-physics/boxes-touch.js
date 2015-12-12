@@ -100,9 +100,9 @@
     var MS_BETWEEN_FRAMES = 1000 / FRAME_RATE;
 
     var topBoundary = $("#drawing-area").offset().top;
-    var bottomBoundary = topBoundary + drawingArea.height;
+    var bottomBoundary = topBoundary + $("#drawing-area").height();
     var leftBoundary = $("#drawing-area").offset().left;
-    var rightBoundary = leftBoundary + drawingArea.width;
+    var rightBoundary = leftBoundary + $("#drawing-area").width();
 
     var updateBoxPositions = function (timestamp){
         var timePassed = timestamp -lastTimestamp;
@@ -124,8 +124,8 @@
                     element.velocity.y *= -0.5;
                 }
 
-                if(offset.top + element.height > bottomBoundary) {
-                    offset.top = element.height - drawingArea.height;
+                if(offset.top + $(element).height() > bottomBoundary) {
+                    offset.top = bottomBoundary - $(element).height();
                     element.velocity.y *= -0.5;
                 }
 
@@ -134,8 +134,8 @@
                     element.velocity.x *= -0.5;
                 }
 
-                if(offset.left > rightBoundary) {
-                    offset.left = rightBoundary;
+                if(offset.left + $(element).width() > rightBoundary) {
+                    offset.left = rightBoundary - $(element).width;
                     element.velocity.x *= -0.5;
                 }
                 
