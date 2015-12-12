@@ -18,6 +18,11 @@
                     left: touch.pageX - touch.target.deltaX,
                     top: touch.pageY - touch.target.deltaY
                 });
+
+                touch.target.velocity.x = touch.pageX - touch.target.lastX;
+                touch.target.velocity.y = touch.pageY - touch.target.lastY;
+                touch.target.lastX = touch.pageX;
+                touch.target.lastY = touch.pageY;
             }
         });
 
@@ -65,6 +70,9 @@
 
             touch.target.startX = startOffset.left;
             touch.target.startY = startOffset.top;
+
+            touch.target.lastX = touch.pageX;
+            touch.target.lastY = touch.pageY;
         });
 
         // Eat up the event so that the drawing area does not
@@ -96,7 +104,7 @@
     };
 
     var lastTimestamp = 0;
-    var FRAME_RATE = 10;
+    var FRAME_RATE = 240;
     var MS_BETWEEN_FRAMES = 1000 / FRAME_RATE;
 
     var topBoundary = $("#drawing-area").offset().top;
@@ -121,22 +129,22 @@
 
                 if(offset.top < topBoundary) {
                     offset.top = topBoundary;
-                    element.velocity.y *= -0.5;
+                    element.velocity.y *= -0.7;
                 }
 
                 if(offset.top + $(element).height() > bottomBoundary) {
                     offset.top = bottomBoundary - $(element).height();
-                    element.velocity.y *= -0.5;
+                    element.velocity.y *= -0.7;
                 }
 
                 if(offset.left < leftBoundary) {
                     offset.left = leftBoundary;
-                    element.velocity.x *= -0.5;
+                    element.velocity.x *= -0.7;
                 }
 
                 if(offset.left + $(element).width() > rightBoundary) {
                     offset.left = rightBoundary - $(element).width;
-                    element.velocity.x *= -0.5;
+                    element.velocity.x *= -0.7;
                 }
                 
             });
@@ -160,8 +168,8 @@
                 "z: " + event.accelerationIncludingGravity.z);
 
             $("div.box").each(function (index, element) {
-                element.acceleration.x = event.accelerationIncludingGravity.x / 1000000;
-                element.acceleration.y = -(event.accelerationIncludingGravity.y / 1000000);
+                element.acceleration.x = event.accelerationIncludingGravity.x / 10000;
+                element.acceleration.y = -(event.accelerationIncludingGravity.y / 10000);
             });
         });
     };
