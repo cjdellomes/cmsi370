@@ -79,9 +79,9 @@ $(function () {
                 var leaguePoints = resultDataEntry.leaguePoints;
                 var wins = resultDataEntry.wins;
                 var losses = resultDataEntry.losses;
-                $("#summoner-search-output").append(queue + " " + name + "<br />")
-                $("#summoner-search-output").append(tier + " " + division + " " + leaguePoints + " lp" + "<br />")
-                $("#summoner-search-output").append(wins + " wins and " + losses + " losses")
+                output2 = $("<p></p>").text(queue + " " + name + "<br>" + tier + " " + division + " " + leaguePoints + 
+                    " lp" + "<br>" + wins + " wins and" + losses + " losses");
+                $("#summoner-search-output").append(output2);
 
             });
 
