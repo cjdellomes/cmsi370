@@ -18,7 +18,7 @@
         var trashPosition = $("#trash").offset();
         var clonePosition = $(this).offset();
         if (clonePosition.left > trashPosition.left && clonePosition.left < trashPosition.left + 100 && 
-        clonePosition.top > trashPosition.top && clonePosition.top < clonePosition.top + 150) {
+        clonePosition.top > trashPosition.top && clonePosition.top < trashPosition.top + 150) {
             target.remove();
             draggable.remove();
         }

@@ -125,33 +125,21 @@ $(function () {
 
             ).done(function (result2) { // JD: 5, 6
 
-                //$("#recent-match-output").text("");
-
                 var resultData = result2.games[0];
 
                 var gameMode = resultData.gameMode; // JD: 9 fixed
                 var subType = resultData.subType;
 
-                //$("#recent-match-output").append(gameMode + " " + subType + "<br />");
-
                 var win = resultData.stats.win;
-                //$("#recent-match-output").append("Game Won: " + win + "<br />");
 
                 var kills = resultData.stats.championsKilled;
                 var assists = resultData.stats.assists;
                 var deaths = resultData.stats.numDeaths;
                 var ratio = (kills + assists) / deaths;
 
-                //$("#recent-match-output").append(kills + " kills, "  + deaths + " deaths, " + assists + " assists <br />");
-                //$("#recent-match-output").append("Kill, Death, Assist Ratio: " + ratio + "<br />");
-
                 var creeps = resultData.stats.minionsKilled;
                 var goldEarned = resultData.stats.goldEarned;
-                //$("#recent-match-output").append("Creeps: " + creeps);
-                //$("#recent-match-output").append("<br />Gold: " + goldEarned);
 
-
-                //$("#recent-match-output").append("<br />Summoner Spells: ");
                 var summonerSpell1 = resultData.spell1;
                 var summonerSpell2 = resultData.spell2;
 
@@ -168,7 +156,7 @@ $(function () {
                 toPrint.append("Gold: " + goldEarned);
                 toPrint.append("<br>");
                 toPrint.append("SummonerSpells: ");
-                
+
                 $.getJSON(
 
                     "https://global.api.pvp.net/api/lol/static-data/na/v1.2/summoner-spell/" + summonerSpell1,
@@ -251,8 +239,8 @@ $(function () {
             }
 
         ).done(function (result) {
-            $("#free-champ-request-output").text("");
             output = result.champions
+            var output2 = $("<p></p>").text("");
             for (var i = 0; i < output.length; i++) { // JD: 11 fixed
                 if (output[i].freeToPlay) { // JD: 12 fixed
                     $.getJSON(
@@ -264,13 +252,12 @@ $(function () {
 
                     ).done(function (result2) { // JD: 5, 6
 
-                        var output2 = result2.name + " " + result2.title;
-
-                        $("#free-champ-request-output").append(output2 + "<br />");
+                        output2.append(result2.name + " " + result2.title + "<br>");
 
                     });
                 }
             }
+            $("#free-champ-request-output").append(output2);
         });
     });
 
@@ -292,12 +279,14 @@ $(function () {
 
         ).done(function (result) {
             // JD: 8 fixed
-            $("#shard-request-output").text("");
-            $("#shard-request-output").text(result.name);
+            var toPrint = $("<p></p>").text(result.name);
 
             for (var i = 0; i < result.services.length; i++) {
-                $("#shard-request-output").append("<br />" + result.services[i].name + ": " + result.services[i].status);
+                toPrint.append("<br>")
+                toPrint.append(result.services[i].name + ": " + result.services[i].status);
             }
+
+            $("#shard-request-output").append(toPrint);
 
         });
     });
