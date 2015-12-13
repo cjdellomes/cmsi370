@@ -79,8 +79,11 @@ $(function () {
                 var leaguePoints = resultDataEntry.leaguePoints;
                 var wins = resultDataEntry.wins;
                 var losses = resultDataEntry.losses;
-                output2 = $("<p></p>").text(queue + " " + name + "<br>" + tier + " " + division + " " + leaguePoints + 
-                    " lp" + "<br>" + wins + " wins and" + losses + " losses");
+                var output2 = $("<p></p>").text(queue + " " + name);
+                output2.append("<br>");
+                output2.append(tier + " " + division + " " + leaguePoints + "lp");
+                output2.append("<br>");
+                output2.append(wins + " wins and" + losses + " losses");
                 $("#summoner-search-output").append(output2);
 
             });
@@ -122,35 +125,50 @@ $(function () {
 
             ).done(function (result2) { // JD: 5, 6
 
-                $("#recent-match-output").text("");
+                //$("#recent-match-output").text("");
 
                 var resultData = result2.games[0];
 
                 var gameMode = resultData.gameMode; // JD: 9 fixed
                 var subType = resultData.subType;
 
-                $("#recent-match-output").append(gameMode + " " + subType + "<br />");
+                //$("#recent-match-output").append(gameMode + " " + subType + "<br />");
 
                 var win = resultData.stats.win;
-                $("#recent-match-output").append("Game Won: " + win + "<br />");
+                //$("#recent-match-output").append("Game Won: " + win + "<br />");
 
                 var kills = resultData.stats.championsKilled;
                 var assists = resultData.stats.assists;
                 var deaths = resultData.stats.numDeaths;
                 var ratio = (kills + assists) / deaths;
 
-                $("#recent-match-output").append(kills + " kills, "  + deaths + " deaths, " + assists + " assists, <br />");
-                $("#recent-match-output").append("Kill, Death, Assist Ratio: " + ratio + "<br />");
+                //$("#recent-match-output").append(kills + " kills, "  + deaths + " deaths, " + assists + " assists <br />");
+                //$("#recent-match-output").append("Kill, Death, Assist Ratio: " + ratio + "<br />");
 
                 var creeps = resultData.stats.minionsKilled;
                 var goldEarned = resultData.stats.goldEarned;
-                $("#recent-match-output").append("Creeps: " + creeps);
-                $("#recent-match-output").append("<br />Gold: " + goldEarned);
+                //$("#recent-match-output").append("Creeps: " + creeps);
+                //$("#recent-match-output").append("<br />Gold: " + goldEarned);
 
 
-                $("#recent-match-output").append("<br />Summoner Spells: ");
+                //$("#recent-match-output").append("<br />Summoner Spells: ");
                 var summonerSpell1 = resultData.spell1;
                 var summonerSpell2 = resultData.spell2;
+
+                var toPrint = $("<p></p>").text(gameMode + " " + subType);
+                toPrint.append("<br>");
+                toPrint.append("Game Won: " + win);
+                toPrint.append("<br>");
+                toPrint.append(kills + " kills, "  + deaths + " deaths, " + assists + " assists");
+                toPrint.append("<br>");
+                toPrint.append("Kill, Death, Assist Ratio: " + ratio);
+                toPrint.append("<br>");
+                toPrint.append("Creeps: " + creeps);
+                toPrint.append("<br>");
+                toPrint.append("Gold: " + goldEarned);
+                toPrint.append("<br>");
+                toPrint.append("SummonerSpells: ");
+                
                 $.getJSON(
 
                     "https://global.api.pvp.net/api/lol/static-data/na/v1.2/summoner-spell/" + summonerSpell1,
@@ -161,7 +179,7 @@ $(function () {
                 ).done(function (result3) {
 
                     summonerSpell1 = result3.name;
-                    $("#recent-match-output").append(summonerSpell1 + " ");
+                    toPrint.append(summonerSpell1 + " ");
 
                 });
                 $.getJSON(
@@ -174,7 +192,7 @@ $(function () {
                 ).done(function (result3) {
 
                     summonerSpell2 = result3.name;
-                    $("#recent-match-output").append(summonerSpell2 + " ");
+                    toPrint.append(summonerSpell2 + " ");
 
                 });
 
@@ -195,7 +213,8 @@ $(function () {
 
                     ).done(function (result3) {
 
-                        $("#recent-match-output").append("<br /> Item: "+ result3.name);
+                        toPrint.append("<br>");
+                        toPrint.append("Item: "+ result3.name);
 
                     });
                 }
@@ -211,9 +230,11 @@ $(function () {
                 ).done(function (result3) { // JD: 5, 6 (squared because it is yet one more level deeper!)
 
                     champ = result3.name + " " + result3.title;
-                    $("#recent-match-output").append("<br /> Champion: " + champ);
+                    toPrint.append("<br /> Champion: " + champ);
 
                 });
+
+                $("#recent-match-output").append(toPrint);
 
             });
 
