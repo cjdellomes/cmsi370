@@ -16,16 +16,20 @@
         <h1>League Of Data</h1>
         <p>League of Legends Data</p>
         <p>Example Summoner Names: The Not Joe, Fat Koala, The PTF, Febiven, DoubleLift, Shiphtur</p>
+        <div>
       </div>
     </div>
     <div class="container">
+      <div id="trash"></div>
 
       <div class="row">
         <div class="form-group">
 
             <label for="champ-request">Get Random Champion</label>
             <button id="champ-request" class="btn btn-default">Random Champion</button>
+            <div class="draggables">
             <p id="champ-request-output"></p>
+            </div>
 
             <label for="summoner-search-term">Search Summoner Rank by Name:</label>
             <input type="text" class="form-control" id="summoner-search-term">
@@ -100,12 +104,12 @@
               <button id="shard-request" class="btn btn-default">Riot Server Status</button>
               <p id="shard-request-output"></p>
             </div>
-
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="api-front-end.js"></script>
+    <script src="widget.js"></script>
   </body>
 </html>

@@ -26,9 +26,9 @@ $(function () {
 
             ).done(function (result2) { // JD: 5, 6
 
-                var output2 = result2.name + " " + result2.title;
+                var output2 = $("<p></p>").text(result2.name + " " + result2.title);
 
-                $("#champ-request-output").text(output2);
+                $("#champ-request-output").append(output2);
 
             });
 
