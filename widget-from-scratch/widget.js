@@ -12,17 +12,19 @@
 
     var handle = function (event) {
         draggable.offset({left: event.pageX, top: event.pageY});
+        // JD: 10
     }
 
     var trash = function(event) {
         var trashPosition = $("#trash").offset();
         var clonePosition = $(this).offset();
+        // JD: 5
         if (clonePosition.left > trashPosition.left && clonePosition.left < trashPosition.left + 100 && 
-        clonePosition.top > trashPosition.top && clonePosition.top < clonePosition.top + 150) {
-            target.remove();
+        clonePosition.top > trashPosition.top && clonePosition.top < clonePosition.top + 150) { // JD: 4
+            target.remove(); // JD: 7
             draggable.remove();
         }
-        else{
+        else{ // JD: 6
             draggable.remove();
         }
     }
@@ -42,6 +44,6 @@
         });
     };
 
-    $(".draggables").widget();
+    $(".draggables").widget(); // JD: 3
 
 }(jQuery));
