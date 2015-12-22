@@ -19,7 +19,7 @@
                     top: touch.pageY - touch.target.deltaY
                 });
 
-                touch.target.velocity.x = touch.pageX - touch.target.lastX;
+                touch.target.velocity.x = touch.pageX - touch.target.lastX; // JD: 3
                 touch.target.velocity.y = touch.pageY - touch.target.lastY;
                 touch.target.lastX = touch.pageX;
                 touch.target.lastY = touch.pageY;
@@ -39,6 +39,8 @@
                 // Change state to "not-moving-anything" by clearing out
                 // touch.target.movingBox.
                 touch.target.movingBox = null;
+
+                // JD: 5
             }
         });
     };
@@ -112,9 +114,9 @@
     var leftBoundary = $("#drawing-area").offset().left;
     var rightBoundary = leftBoundary + $("#drawing-area").width();
 
-    var updateBoxPositions = function (timestamp){
+    var updateBoxPositions = function (timestamp){ // JD: 2
         var timePassed = timestamp -lastTimestamp;
-        if (timePassed > MS_BETWEEN_FRAMES){
+        if (timePassed > MS_BETWEEN_FRAMES){ // JD: 2, etc.
             $("#console").text(timePassed);
 
             $("div.box").each(function (index, element){
@@ -127,9 +129,9 @@
 
                 $(element).offset(offset);
 
-                if(offset.top < topBoundary) {
+                if(offset.top < topBoundary) { // JD: 3
                     offset.top = topBoundary;
-                    element.velocity.y *= -0.7;
+                    element.velocity.y *= -0.7; // JD: 6
                 }
 
                 if(offset.top + $(element).height() > bottomBoundary) {
@@ -162,7 +164,7 @@
         setDrawingArea(this);
         window.requestAnimationFrame(updateBoxPositions);
 
-        window.addEventListener('devicemotion', function (event){
+        window.addEventListener('devicemotion', function (event){ // JD: 2
             $("#console").text("x: " + event.accelerationIncludingGravity.x +
                 "y: " + event.accelerationIncludingGravity.y +
                 "z: " + event.accelerationIncludingGravity.z);
